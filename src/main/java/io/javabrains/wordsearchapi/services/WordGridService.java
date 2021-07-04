@@ -119,37 +119,43 @@ public class WordGridService {
 
                 if(coordinate.x+word.length() > gridSize) return false;
                 for( int i=0; i< word.length() ; i++){
-                    if('_' != contents[coordinate.x+i][coordinate.y]){ return false; }
+                    char c = contents[coordinate.x+i][coordinate.y];
+                    if('_' != contents[coordinate.x+i][coordinate.y] && word.charAt(i)!= c){ return false; }
                 }
                 break;
             case VERTICAL:
                 if(coordinate.y+word.length()> gridSize){return  false; }
                 for( int i=0; i< word.length() ; i++){
-                    if('_' != contents[coordinate.x][coordinate.y+i ]){ return false; }
+                    char c = contents[coordinate.x][coordinate.y+i ];
+                    if('_' != contents[coordinate.x][coordinate.y+i ] && word.charAt(i) != c ){ return false; }
                 }
                 break;
             case DIAGONAL:
                 if(coordinate.y+word.length()> gridSize || coordinate.x + word.length() > gridSize ){ return false;}
                 for( int i=0; i< word.length() ; i++){
-                    if('_' != contents[coordinate.x+i][coordinate.y + i]){ return false; }
+                    char c = contents[coordinate.x+i][coordinate.y + i];
+                    if('_' != contents[coordinate.x+i][coordinate.y + i] && word.charAt(i)!=c ){ return false; }
                 }
                 break;
             case HORIZONTAL_INVERSE:
                 if(coordinate.x < word.length() ) return false;
                 for( int i=0; i< word.length() ; i++){
-                    if('_' != contents[coordinate.x-i][coordinate.y]){ return false; }
+                    char c = contents[coordinate.x-i][coordinate.y];
+                    if('_' != contents[coordinate.x-i][coordinate.y] && word.charAt(i)!=c ){ return false; }
                 }
                 break;
             case VERTICAL_INVERSE:
                 if(coordinate.y< word.length() ){return  false; }
                 for( int i=0; i< word.length() ; i++){
-                    if('_' != contents[coordinate.x][coordinate.y-i ]){ return false; }
+                    char c = contents[coordinate.x][coordinate.y-i ];
+                    if('_' != contents[coordinate.x][coordinate.y-i ] && word.charAt(i)!=c){ return false; }
                 }
                 break;
             case DIAGONAL_INVERSE:
                 if(coordinate.y< word.length() || coordinate.x < word.length() ){ return false;}
                 for( int i=0; i< word.length() ; i++){
-                    if('_' != contents[coordinate.x-i][coordinate.y - i]){ return false; }
+                    char c = contents[coordinate.x-i][coordinate.y - i];
+                    if('_' != contents[coordinate.x-i][coordinate.y - i] && word.charAt(i)!=c ){ return false; }
                 }
                 break;
         }

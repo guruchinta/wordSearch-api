@@ -2,10 +2,7 @@ package io.javabrains.wordsearchapi.controller;
 
 import io.javabrains.wordsearchapi.services.WordGridService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +13,7 @@ public class WordSearchController {
     public WordGridService wordGridService;
 
     @GetMapping("/getgrid")
+    @CrossOrigin(origins="http://localhost:1234")
     public String createWordGrid(@RequestParam int gridSize,@RequestParam String wordsString){
         List<String> words= Arrays.asList(wordsString.split(","));
         char[][] grid=wordGridService.generateGrid(gridSize, words);
@@ -27,6 +25,7 @@ public class WordSearchController {
             }
             str+="\r\n";
         }
+        System.out.println(str);
         return str;
     }
 
